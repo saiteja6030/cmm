@@ -1,3 +1,6 @@
+launch amazon linux 2 ami instance 
+allow security group 80,20,3306 while launching an instance
+
 apache installation
 ========================
 sudo yum install httpd git 
@@ -34,3 +37,9 @@ create database oilfeed
 
 exit
 mysqldump -u root -p oilfeed > oilfeed.sql
+
+login with url :ipaddress/appname and check the app login admin/abc headoffice/abc
+
+#!/bin/bash
+sudo systemctl start httpd.service
+sudo systemctl start mariadb.service
