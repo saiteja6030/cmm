@@ -1,0 +1,45 @@
+launch amazon linux 2 ami instance 
+allow security group 80,20,3306 while launching an instance
+
+apache installation
+========================
+sudo yum install httpd git 
+sudo systemctl start httpd.service
+
+php installation
+======================== 
+sudo yum install php php-mysql
+sudo systemctl restart httpd.service
+
+
+mysql installation
+==================================
+sudo yum install mariadb-server mariadb
+sudo systemctl start mariadb
+sudo mysql_secure_installation
+sudo systemctl enable mariadb.service
+
+git clone https://github.com/saiteja6030/cmm.git
+move oilfeed .sql file into centos directory
+move clone app code into /var/www/html/
+
+cd /etc/httpd/conf/httpd.conf paste this code 
+<Directory /var/www/html>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+</Directory>
+
+mysql -u root -p 
+enter password
+show databases;
+create database oilfeed
+
+exit
+mysqldump -u root -p oilfeed > oilfeed.sql
+
+login with url :ipaddress/appname and check the app login admin/abc headoffice/abc
+
+#!/bin/bash
+sudo systemctl start httpd.service
+sudo systemctl start mariadb.service
